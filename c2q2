@@ -1,0 +1,8 @@
+a int8_t
+b boolean
+c constant double
+d int
+e float
+f int32_t
+g char
+h int16_t
