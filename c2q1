@@ -1,0 +1,2 @@
+Symbolic constants are better because changing it at its declaration will change it everyone in the code but literal constants
+and define constants are harder to change without conflict.
