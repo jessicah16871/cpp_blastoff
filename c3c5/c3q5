@@ -1,0 +1,6 @@
+a. depending on how the compiler evaluates the parameters, x might be a different value because of the ++. The order of 
+evaluation will change what passes into the function
+b. rounding
+c. unsure about sign
+d. floating point error which is why you need a separate function to evaluate
+e. can't divide by zero 
