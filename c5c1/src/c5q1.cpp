@@ -21,33 +21,39 @@ double calculateHeight(double initialHeight, int seconds)
 }
 
 // Prints height every second till ball has reached the ground
-void printHeight(double height, int seconds)
+bool printHeight(double height, int seconds)
 {
 	if (height > 0.0)
 	{
 		std::cout << "At " << seconds << " seconds, the ball is at height:\t" << height <<
 			" meters\n";
+		return true;
 	}
 	else
+	{
 		std::cout << "At " << seconds << " seconds, the ball is on the ground.\n";
+		return false;
+	}
 }
 
-void calculateAndPrintHeight(double initialHeight, int seconds)
+bool calculateAndPrintHeight(double initialHeight, int seconds)
 {
 	double height = calculateHeight(initialHeight, seconds);
-	printHeight(height, seconds);
+	return printHeight(height, seconds);
 }
 
 int main()
 {
 	const double initialHeight = getInitialHeight();
+	bool air = true;
+	int time = 0;
 
-	calculateAndPrintHeight(initialHeight, 0);
-	calculateAndPrintHeight(initialHeight, 1);
-	calculateAndPrintHeight(initialHeight, 2);
-	calculateAndPrintHeight(initialHeight, 3);
-	calculateAndPrintHeight(initialHeight, 4);
-	calculateAndPrintHeight(initialHeight, 5);
+	do
+	{
+		air = calculateAndPrintHeight(initialHeight, time);
+		time++;
+	}
+	while(air);
 
 	return 0;
 }
