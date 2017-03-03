@@ -13,9 +13,15 @@ using namespace std;
 
 int readGuess(int num) {
 	int guess;
-	std::cout << "Guess #" << num << ":" << endl;
+	std::cout << "Guess #" << num << ": ";
 	std::cin >> guess;
 	return guess;
+}
+
+int getRandomNumber(int min, int max)
+{
+    static const double fraction = 1.0 / (static_cast<double>(RAND_MAX) + 1.0);
+    return static_cast<int>(rand() * fraction * (max - min + 1) + min);
 }
 
 bool printResult(int guess, int num){
@@ -47,8 +53,10 @@ int main() {
 	std::cout << "Let's play a game.  I'm thinking of a number.  "
 			"You have 7 tries to guess what it is." << endl;
 	while(play){
+		getRandomNumber(1, 100);
+		rand = getRandomNumber(1, 100);
 
-		for(int i = 0; i < 8; i++){
+		for(int i = 1; i < 8; i++){
 			int num = readGuess(i);
 			if(printResult(num, rand)){
 				won = true;
@@ -59,6 +67,15 @@ int main() {
 		if(!won){
 			std::cout << "Sorry, you lose.  The correct number was " << rand << endl;
 		}
+
+		char ans;
+		do
+		{
+			std::cout << "Would you like to play again (y/n)? ";
+			std::cin >> ans;
+		} while (ans != 'y' && ans != 'n');
+
+		play = ans == 'y'? true: false;
 	}
 	return 0;
 }
