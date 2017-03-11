@@ -1,0 +1,5 @@
+a. index array[5] will be out of bounds
+b. *ptr is constant so line 8 won't work
+c. array decayed to a pointer
+d. out of scope
+e. int pointer to double
